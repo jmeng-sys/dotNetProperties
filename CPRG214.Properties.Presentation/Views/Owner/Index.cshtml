@@ -1,0 +1,39 @@
+﻿@model IEnumerable<CPRG214.Properties.Domain.Owner>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>List of Owners</h3>
+
+<p>
+    <a asp-action="Create">Create New Owner</a>
+</p>
+<table class="table col-6">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Phone)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) 
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

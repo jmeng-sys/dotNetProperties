@@ -1,0 +1,25 @@
+﻿@page
+@model CPRG214.Properties.PageApp.Pages.RentalPropertiesModel
+@{
+    ViewData["Title"] = "RentalProperties";
+}
+<h3>RentalProperties</h3>
+<table class="table col-6">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(r => r.Rentals[0].Address)</th>
+            <th>@Html.DisplayNameFor(r => r.Rentals[0].City)</th>
+            <th>@Html.DisplayNameFor(r => r.Rentals[0].Owner.Name)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var rental in Model.Rentals)
+        {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => rental.Address)</td>
+            <td>@Html.DisplayFor(modelItem => rental.City)</td>
+            <td>@Html.DisplayFor(modelItem => rental.Owner.Name)</td>
+        </tr>
+        }
+    </tbody>
+</table>

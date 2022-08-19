@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h1>Search Rental Properties</h1>
+
+<select id="uxPropertyTypes" asp-items="ViewBag.PropertyTypes"></select>
+
+<div id="uxDisplay">
+    @await Component.InvokeAsync("RentalsByType", 0)
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#uxPropertyTypes").change(function () {
+                var propertyTypeID = $("#uxPropertyTypes").val();
+
+                $.ajax({
+                    method: 'GET',
+                    url: '/Rentals/GetPropertiesByType',
+                    data: { id: propertyTypeID }
+                }).done(function (result, statusText, xhdr) {
+                    $("#uxDisplay").html(result);
+                });
+            });
+        });
+    </script>
+}
